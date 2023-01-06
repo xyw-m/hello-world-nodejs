@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>JSONP</title>
+    </head>
+    <body>
+        <div>
+            <h1>昭昭山河</h1>
+            <button id="btn">发送JSONP请求</button>
+        </div>
+        <script type="text/javascript">
+            let button = document.getElementById('btn')
+            btn.addEventListener('click', function(){
+                let script = document.createElement('script')
+                script.type = 'text/javascript'
+                script.src = 'http://127.0.0.1:3000/?callback=callback'
+                document.body.appendChild(script)
+                console.log('appended.')
+            })
+            function callback(data){
+                console.log('success')
+                console.log(data.user)
+            }
+        </script>
+        <script type="text/javascript" scr="http://127.0.0.1:3000/?callback=callback"></script>
+    </body>
+</html>
